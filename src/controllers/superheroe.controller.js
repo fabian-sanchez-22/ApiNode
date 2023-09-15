@@ -1,7 +1,7 @@
-const Superheroe = require("../models/superheroe.model.js")
+import Superheroe from "../models/superheroe.model.js"
 
 //create 
-exports.create = (req, res) => {
+export function create (req, res) {
     const nuevo_superheroe = new Superheroe(req.body)
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
         res.status(400).send({ error: true, message: "No tiene datos" })
@@ -18,15 +18,15 @@ exports.create = (req, res) => {
 }
 
 //find id
-exports.findById = (req, res) => {
-    Superheroe.findById(req, params.id, (err, superheroe) => {
+export function findById (req, res) {
+    Superheroe.findById(req.params.id, (err, superheroe) => {
         if (err) res.send(err)
         res.json(superheroe); //complete record
     })
 }
 
 //find all 
-exports.findAll = (req, res) => {
+export function findAll (req, res) {
     Superheroe.findAll((err, superheroe) => {
         if (err) res.send(err);
         console.log("res", superheroe);
@@ -35,7 +35,7 @@ exports.findAll = (req, res) => {
 }
 
 //update
-exports.update = (req, res) => {
+export function update (req, res) {
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
         res.status(400).send({
             err: true,
@@ -54,7 +54,7 @@ exports.update = (req, res) => {
 }
 
 //delete 
-exports.delete = (req, res) => {
+export function deletes (req, res){
     Superheroe.delete(req.params.id, (err, superheroe) => {
         if (err) res.send(err)
         res.json({

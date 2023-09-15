@@ -1,10 +1,10 @@
-const mysql = require("mysql");
+import mysql from "mysql"
 
 const dbConn = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    dabase: "superheroe"
+    database: "superheroe"
 });
 
 dbConn.connect((err) => {

@@ -1,14 +1,14 @@
 import express from "express"
 const router = express.Router()
-const  superheroeController = require("../controllers/superheroe.controller.js")
-// const superheroeController = require("../controllers/superheroe.controller")
+import  {create, findById, findAll, update, deletes} from "../controllers/superheroe.controller.js"
 
 //CRUD
 
-router.post("/", superheroeController.create)
-router.get("/:id", superheroeController.findById)
-router.get("/", superheroeController.findAll)
-router.put("/:id", superheroeController.updateById)
-router.delete("/:id", superheroeController.removeById)
+router.post("/", create)
+router.get("/:id", findById)
+router.get("/", findAll)
+router.put("/:id", update)
+router.delete("/:id", deletes)
+
 
 export default router

@@ -1,13 +1,13 @@
-var dbConn = require("./../../config/db.config")
+import dbConn from "./../../config/db.config.js"
 
-var Superheroe = (superheroe) => {
+function Superheroe (superheroe) {
     this.nombre = superheroe.nombre
     this.apellido = superheroe.apellido
     this.nombre_heroe = superheroe.nombre_heroe
     this.ciudad = superheroe.ciudad
 }
 
-superheroe.create = (nuevo_superheroe, result) => {
+Superheroe.create = (nuevo_superheroe, result) => {
     dbConn.query("INSERT INTO superheroe set ?", nuevo_superheroe, (err, res) => {
         if (err) {
             console.log("error", err);
@@ -18,8 +18,6 @@ superheroe.create = (nuevo_superheroe, result) => {
         }
     })
 }
-
-module.export = Superheroe
 
 
 Superheroe.findById = (id, result) => {
@@ -68,7 +66,7 @@ Superheroe.update = (id, superheroe, result) => {
 
 
 Superheroe.delete = (id, result) => {
-    dbConn.query("DELETE * FROM superheroe WHERE id=?", id,
+    dbConn.query("DELETE FROM superheroe WHERE id=?", id,
         (err, res) => {
             if (err) {
                 console.log("Error", err);
@@ -80,3 +78,6 @@ Superheroe.delete = (id, result) => {
         }
     )
 }
+
+
+export default Superheroe
